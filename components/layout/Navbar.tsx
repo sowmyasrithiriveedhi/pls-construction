@@ -122,7 +122,7 @@ export default function Navbar() {
 
       {/* ================= MOBILE BUTTON ================= */}
       <button
-        className="md:hidden text-2xl"
+        className="md:hidden text-2xl text-slate-900"
         onClick={() => setMobileOpen(true)}
       >
         ☰
