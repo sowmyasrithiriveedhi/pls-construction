@@ -45,7 +45,7 @@ export default function AllipuramPage() {
 
             {/* Call */}
             <a
-              href="tel:+919876543210"
+              href="tel:+918885577399"
               className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
             >
               Call Now
@@ -53,7 +53,7 @@ export default function AllipuramPage() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/919876543210?text=Hello%20I%20want%20information%20about%20construction%20materials"
+              href="https://wa.me/918885577399?text=Hello%20I%20want%20information%20about%20construction%20materials"
               target="_blank"
               className="bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition"
             >
