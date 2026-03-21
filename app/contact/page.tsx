@@ -1,4 +1,12 @@
+"use client";
+
+import { useLanguage } from "../../src/context/LanguageContext";
+import { translations } from "../../src/translations";
+
 export default function ContactPage() {
+  const { lang } = useLanguage();
+  const t = translations[lang as keyof typeof translations];
+
   return (
     <>
       {/* Hero Section */}
@@ -12,7 +20,7 @@ export default function ContactPage() {
         {/* Dark Overlay + Contact Text */}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white">
-            Contact
+            {t.contactTitle}
           </h1>
         </div>
       </section>
@@ -22,8 +30,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
 
           <p className="text-gray-300 text-lg">
-            Get in touch with PLS Construction Materials for reliable
-            construction materials and trusted service.
+            {t.contactDesc}
           </p>
 
           {/* Buttons */}
@@ -34,7 +41,7 @@ export default function ContactPage() {
               href="tel:+918885577399"
               className="bg-green-600 text-white px-7 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
             >
-              Call Now
+              {t.call}
             </a>
 
             {/* WhatsApp Button */}
@@ -42,7 +49,7 @@ export default function ContactPage() {
               href="https://wa.me/918885577399?text=Hello%20I%20want%20to%20know%20about%20construction%20materials"
               className="bg-emerald-500 text-white px-7 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition"
             >
-              WhatsApp
+              {t.whatsapp}
             </a>
 
           </div>

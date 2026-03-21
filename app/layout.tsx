@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { LanguageProvider } from "../src/context/LanguageContext"; // ✅ added
 
 export const metadata = {
   title: "PLS Construction Materials",
@@ -16,26 +17,18 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex flex-col min-h-screen">
 
-        <Header />
+        {/* ✅ Added wrapper only */}
+        <LanguageProvider>
 
-        <main className="flex-grow">
-          {children}
-        </main>
+          <Header />
 
-        <Footer />
+          <main className="flex-grow">
+            {children}
+          </main>
 
-        {/* Floating WhatsApp Button */}
-        <a
-          href="https://wa.me/918885577399?text=Hello%20I%20want%20information%20about%20construction%20materials"
-          target="_blank"
-          className="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50"
-        >
-          <img
-            src="/whatsapp.png"
-            alt="WhatsApp"
-            className="w-8 h-8"
-          />
-        </a>
+          <Footer />
+
+        </LanguageProvider>
 
       </body>
     </html>

@@ -1,4 +1,12 @@
+"use client";
+
+import { useLanguage } from "../../src/context/LanguageContext";
+import { translations } from "../../src/translations/index";
+
 export default function AboutPage() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+
   return (
     <>
       {/* Hero Section */}
@@ -12,7 +20,7 @@ export default function AboutPage() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white">
-            About Us
+            {t.about} {/* ✅ replaced */}
           </h1>
         </div>
       </section>
@@ -24,33 +32,23 @@ export default function AboutPage() {
           {/* Heading */}
           <div className="text-center space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white">
-              PLS Construction Materials
+              {t.aboutTitle} {/* ✅ replaced */}
             </h1>
           </div>
 
           {/* Content */}
           <div className="space-y-6 text-gray-200 text-lg leading-relaxed text-center">
             <p>
-              PLS Construction Materials is committed to supplying reliable and
-              high-quality construction materials for strong and durable
-              structures.We believe that proper maintenance of materials is the first rule of
-              quality construction, ensuring safety and long-lasting performance.
+              {t.aboutDesc1}
             </p>
 
-            <p>
-              With trusted products and branches in
-              <span className="font-semibold text-white"> Kisan Nagar </span>
-              and
-              <span className="font-semibold text-white"> Allipuram</span>, we
-              proudly support builders, contractors, and customers with dependable
-              service and timely delivery.
-            </p>
+            <p>{t.aboutDesc2}</p>
           </div>
 
           {/* Tagline */}
           <div className="pt-8 border-t border-gray-700 text-center">
             <p className="text-2xl md:text-3xl font-semibold text-white tracking-wide">
-              Strong materials. Trusted service. Solid foundations.
+              {t.tagline} {/* ✅ replaced */}
             </p>
           </div>
 

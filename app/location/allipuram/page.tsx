@@ -1,4 +1,12 @@
+"use client";
+
+import { useLanguage } from "../../../src/context/LanguageContext";
+import { translations } from "../../../src/translations";
+
 export default function AllipuramPage() {
+  const { lang } = useLanguage();
+  const t = translations[lang as keyof typeof translations];
+
   return (
     <>
       {/* Hero Section */}
@@ -11,7 +19,7 @@ export default function AllipuramPage() {
 
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white">
-            Allipuram
+            {t.allipuram}
           </h1>
         </div>
       </section>
@@ -21,14 +29,20 @@ export default function AllipuramPage() {
         <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
 
           {/* Google Map */}
-          <div className="w-full h-[450px] rounded-lg overflow-hidden shadow-lg">
+          <div className="relative w-full h-[450px] rounded-lg overflow-hidden shadow-lg">
+
+            {/* Loading Skeleton */}
+            <div className="absolute inset-0 animate-pulse bg-gray-300"></div>
+
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d5532.924266602611!2d80.03964266772302!3d14.452963356902691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sin!4v1772973945241!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4351.523262126677!2d80.0419521!3d14.453136700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4c8b00403aaa45%3A0x457398be6752c4f!2sPLS%20building%20materials!5e1!3m2!1sen!2sin!4v1773234790516!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               loading="lazy"
+              className="relative"
             ></iframe>
+
           </div>
 
           {/* Buttons */}
@@ -36,28 +50,11 @@ export default function AllipuramPage() {
 
             {/* Directions */}
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=14.452963,80.039642"
+              href="https://www.google.com/maps/dir/?api=1&destination=14.4531367,80.0419521"
               target="_blank"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
             >
-              Get Directions
-            </a>
-
-            {/* Call */}
-            <a
-              href="tel:+918885577399"
-              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-            >
-              Call Now
-            </a>
-
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/918885577399?text=Hello%20I%20want%20information%20about%20construction%20materials"
-              target="_blank"
-              className="bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition"
-            >
-              WhatsApp
+              {t.getDirections}
             </a>
 
           </div>

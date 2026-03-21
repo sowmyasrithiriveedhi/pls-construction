@@ -3,11 +3,16 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useLanguage } from "../../src/context/LanguageContext";
+import { translations } from "../../src/translations/index"; // ✅ added
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMaterialsOpen, setMobileMaterialsOpen] = useState(false);
   const [mobileLocationOpen, setMobileLocationOpen] = useState(false);
+  const { lang, setLang } = useLanguage();
+
+  const t = translations[lang as keyof typeof translations]; // ✅ added
 
   const pathname = usePathname();
 
@@ -27,11 +32,11 @@ export default function Navbar() {
                 : "hover:text-slate-500"
             }`}
           >
-            Home
+            {t.home}
           </Link>
         </li>
 
-        {/* Desktop Materials */}
+        {/* Materials */}
         <li className="relative group">
           <span
             className={`transition cursor-pointer ${
@@ -40,18 +45,18 @@ export default function Navbar() {
                 : "hover:text-slate-500"
             }`}
           >
-            Materials
+            {t.materials}
           </span>
 
           <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             <ul className="space-y-2 text-sm">
-              <li><Link href="/materials/column-boxes" className="hover:text-slate-500">Column Boxes</Link></li>
-              <li><Link href="/materials/cutting-machine" className="hover:text-slate-500">Cutting Machine</Link></li>
-              <li><Link href="/materials/pillar-boxes" className="hover:text-slate-500">Pillar Boxes</Link></li>
-              <li><Link href="/materials/sidewall-sheets" className="hover:text-slate-500">Sidewall Sheets</Link></li>
-              <li><Link href="/materials/iron-jockeys" className="hover:text-slate-500">Iron Jockeys</Link></li>
-              <li><Link href="/materials/slab-sheets" className="hover:text-slate-500">Slab Sheets</Link></li>
-              <li><Link href="/materials/flint-beam-sheets" className="hover:text-slate-500">Flint Beam Sheets</Link></li>
+              <li><Link href="/materials/column-boxes">{t.columnBoxes}</Link></li>
+              <li><Link href="/materials/cutting-machine">{t.cuttingMachine}</Link></li>
+              <li><Link href="/materials/pillar-boxes">{t.pillarBoxes}</Link></li>
+              <li><Link href="/materials/sidewall-sheets">{t.sidewallSheets}</Link></li>
+              <li><Link href="/materials/iron-jockeys">{t.ironJockeys}</Link></li>
+              <li><Link href="/materials/slab-sheets">{t.slabSheets}</Link></li>
+              <li><Link href="/materials/flint-beam-sheets">{t.flintBeamSheets}</Link></li>
             </ul>
           </div>
         </li>
@@ -66,11 +71,11 @@ export default function Navbar() {
                 : "hover:text-slate-500"
             }`}
           >
-            Gallery
+            {t.gallery}
           </Link>
         </li>
 
-        {/* Desktop Location */}
+        {/* Location */}
         <li className="relative group">
           <span
             className={`transition cursor-pointer ${
@@ -79,13 +84,13 @@ export default function Navbar() {
                 : "hover:text-slate-500"
             }`}
           >
-            Location
+            {t.location}
           </span>
 
           <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 w-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             <ul className="space-y-2 text-sm">
-              <li><Link href="/location/kisan-nagar" className="hover:text-slate-500">Kisan Nagar</Link></li>
-              <li><Link href="/location/allipuram" className="hover:text-slate-500">Allipuram</Link></li>
+              <li><Link href="/location/kisan-nagar">{t.kisanNagar}</Link></li>
+              <li><Link href="/location/allipuram">{t.allipuram}</Link></li>
             </ul>
           </div>
         </li>
@@ -100,7 +105,7 @@ export default function Navbar() {
                 : "hover:text-slate-500"
             }`}
           >
-            About Us
+            {t.about}
           </Link>
         </li>
 
@@ -114,8 +119,27 @@ export default function Navbar() {
                 : "hover:text-slate-500"
             }`}
           >
-            Contact
+            {t.contact}
           </Link>
+        </li>
+
+        {/* Language Switch */}
+        <li>
+          <div className="ml-6 flex gap-2">
+            <button
+              onClick={() => setLang("en")}
+              className={`px-2 ${lang === "en" ? "font-bold" : ""}`}
+            >
+              EN
+            </button>
+
+            <button
+              onClick={() => setLang("te")}
+              className={`px-2 ${lang === "te" ? "font-bold" : ""}`}
+            >
+              తెలుగు
+            </button>
+          </div>
         </li>
 
       </ul>
@@ -128,65 +152,80 @@ export default function Navbar() {
         ☰
       </button>
 
-      {/* ================= MOBILE SIDE DRAWER ================= */}
+      {/* ================= MOBILE DRAWER ================= */}
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex justify-end p-4">
-          <button onClick={() => setMobileOpen(false)} className="text-xl">
-            ✕
-          </button>
+          <button onClick={() => setMobileOpen(false)}>✕</button>
         </div>
 
         <div className="flex flex-col space-y-6 px-6 text-slate-800 font-medium">
 
-          <Link href="/" onClick={() => setMobileOpen(false)}>Home</Link>
+          <Link href="/" onClick={() => setMobileOpen(false)}>{t.home}</Link>
 
-          {/* Mobile Materials */}
+          {/* Materials */}
           <div>
             <button
               onClick={() => setMobileMaterialsOpen(!mobileMaterialsOpen)}
               className="w-full text-left"
             >
-              Materials
+              {t.materials}
             </button>
 
             {mobileMaterialsOpen && (
               <div className="ml-4 mt-2 space-y-2 text-sm">
-                <Link href="/materials/column-boxes" className="block" onClick={() => setMobileOpen(false)}>Column Boxes</Link>
-                <Link href="/materials/cutting-machine" className="block" onClick={() => setMobileOpen(false)}>Cutting Machine</Link>
-                <Link href="/materials/pillar-boxes" className="block" onClick={() => setMobileOpen(false)}>Pillar Boxes</Link>
-                <Link href="/materials/sidewall-sheets" className="block" onClick={() => setMobileOpen(false)}>Sidewall Sheets</Link>
-                <Link href="/materials/iron-jockeys" className="block" onClick={() => setMobileOpen(false)}>Iron Jockeys</Link>
-                <Link href="/materials/slab-sheets" className="block" onClick={() => setMobileOpen(false)}>Slab Sheets</Link>
-                <Link href="/materials/flint-beam-sheets" className="block" onClick={() => setMobileOpen(false)}>Flint Beam Sheets</Link>
+                <Link href="/materials/column-boxes" onClick={() => setMobileOpen(false)}>Column Boxes</Link>
+                <Link href="/materials/cutting-machine" onClick={() => setMobileOpen(false)}>Cutting Machine</Link>
+                <Link href="/materials/pillar-boxes" onClick={() => setMobileOpen(false)}>Pillar Boxes</Link>
+                <Link href="/materials/sidewall-sheets" onClick={() => setMobileOpen(false)}>Sidewall Sheets</Link>
+                <Link href="/materials/iron-jockeys" onClick={() => setMobileOpen(false)}>Iron Jockeys</Link>
+                <Link href="/materials/slab-sheets" onClick={() => setMobileOpen(false)}>Slab Sheets</Link>
+                <Link href="/materials/flint-beam-sheets" onClick={() => setMobileOpen(false)}>Flint Beam Sheets</Link>
               </div>
             )}
           </div>
 
-          <Link href="/gallery" onClick={() => setMobileOpen(false)}>Gallery</Link>
+          <Link href="/gallery" onClick={() => setMobileOpen(false)}>{t.gallery}</Link>
 
-          {/* Mobile Location */}
+          {/* Location */}
           <div>
             <button
               onClick={() => setMobileLocationOpen(!mobileLocationOpen)}
               className="w-full text-left"
             >
-              Location
+              {t.location}
             </button>
 
             {mobileLocationOpen && (
               <div className="ml-4 mt-2 space-y-2 text-sm">
-                <Link href="/location/kisan-nagar" className="block" onClick={() => setMobileOpen(false)}>Kisan Nagar</Link>
-                <Link href="/location/allipuram" className="block" onClick={() => setMobileOpen(false)}>Allipuram</Link>
+                <Link href="/location/kisan-nagar" onClick={() => setMobileOpen(false)}>Kisan Nagar</Link>
+                <Link href="/location/allipuram" onClick={() => setMobileOpen(false)}>Allipuram</Link>
               </div>
             )}
           </div>
 
-          <Link href="/about" onClick={() => setMobileOpen(false)}>About Us</Link>
-          <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)}>{t.about}</Link>
+          <Link href="/contact" onClick={() => setMobileOpen(false)}>{t.contact}</Link>
+
+          {/* Language Switch Mobile */}
+          <div className="flex gap-4 pt-4">
+            <button
+              onClick={() => setLang("en")}
+              className={`${lang === "en" ? "font-bold" : ""}`}
+            >
+              EN
+            </button>
+
+            <button
+              onClick={() => setLang("te")}
+              className={`${lang === "te" ? "font-bold" : ""}`}
+            >
+              తెలుగు
+            </button>
+          </div>
 
         </div>
       </div>
