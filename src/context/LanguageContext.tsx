@@ -20,17 +20,17 @@
 
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
+import { Language } from "../translations";
 
 const LanguageContext = createContext<any>(null);
 
 export function LanguageProvider({ children }: any) {
-  const [lang, setLang] = useState("en");
-
+  const [lang, setLang] = useState<Language>("en");
   // ✅ Load saved language
   useEffect(() => {
     const savedLang = localStorage.getItem("lang");
     if (savedLang) {
-      setLang(savedLang);
+      setLang(savedLang as Language);
     }
   }, []);
 
