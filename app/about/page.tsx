@@ -2,10 +2,11 @@
 
 import { useLanguage } from "../../src/context/LanguageContext";
 import { translations } from "../../src/translations/index";
+import { Language } from "../../src/context/LanguageContext";
 
 export default function AboutPage() {
-  const { lang } = useLanguage();
-  const t = translations[lang];
+  const { lang } = useLanguage() as { lang: Language };
+  const t = translations[lang as keyof typeof translations];
 
   return (
     <>
