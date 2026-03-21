@@ -20,7 +20,8 @@
 
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
-export { Language } from "../translations";
+import { Language } from "../translations";
+export type { Language } from "../translations";
 
 const LanguageContext = createContext<any>(null);
 
