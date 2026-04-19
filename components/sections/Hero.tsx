@@ -1,6 +1,13 @@
- import Image from "next/image";
+"use client";
+
+import Image from "next/image";
+import { useLanguage } from "../../src/context/LanguageContext";
+import { translations } from "../../src/translations";
 
 export default function Hero() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+
   return (
     <section className="relative h-[90vh] w-full">
       
@@ -19,7 +26,7 @@ export default function Hero() {
       {/* Center Text */}
       <div className="absolute inset-0 flex items-center justify-center">
         <h2 className="text-white text-4xl md:text-6xl font-extrabold text-center px-6">
-          “The Foundation Starts With Us.”
+          {t.heroQuote}
         </h2>
       </div>
 

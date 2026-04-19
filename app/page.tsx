@@ -1,21 +1,27 @@
+"use client";
 
 import Hero from "@/components/sections/Hero";
 import InfoSection from "@/components/sections/InfoSection";
+import { useLanguage } from "../src/context/LanguageContext";
+import { translations } from "../src/translations";
 
 export default function Home() {
+  const { lang } = useLanguage();
+  const t = translations[lang];
+
   return (
     <>
       <Hero />
 
       <InfoSection
-        title="High-Quality Construction Materials"
-        description="We provide durable and high-strength construction materials designed to build strong foundations and long-lasting structures. Trusted by contractors and builders across locations."
+        title={t.homeTitle1}
+        description={t.homeDesc1}
         image="/images/section1.jpg"
       />
 
       <InfoSection
-        title="Reliable Service & On-Time Delivery"
-        description="With multiple branch locations and a strong supply network, we ensure timely delivery and customer satisfaction. We focus on reliability, trust, and long-term partnerships."
+        title={t.homeTitle2}
+        description={t.homeDesc2}
         image="/images/section2.jpg"
         reverse
       />
