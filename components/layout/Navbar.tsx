@@ -183,8 +183,25 @@ export default function Navbar() {
           <Link href="/contact" onClick={() => setMobileOpen(false)}>{t.contact}</Link>
 
           <div className="flex gap-4 pt-4">
-            <button onClick={() => setLang("en")} className={`${lang === "en" ? "font-bold" : ""}`}>EN</button>
-            <button onClick={() => setLang("te")} className={`${lang === "te" ? "font-bold" : ""}`}>తెలుగు</button>
+            <button
+              onClick={() => {
+                setLang("en");
+                setMobileOpen(false);
+              }}
+              className={`${lang === "en" ? "font-bold" : ""}`}
+            >
+              EN
+            </button>
+
+            <button
+              onClick={() => {
+                setLang("te");
+                setMobileOpen(false);
+              }}
+              className={`${lang === "te" ? "font-bold" : ""}`}
+            >
+             తెలుగు
+            </button>
           </div>
 
         </div>
