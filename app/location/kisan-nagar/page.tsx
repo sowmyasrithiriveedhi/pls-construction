@@ -37,7 +37,7 @@ export default function KisanNagarPage() {
             <div className="absolute inset-0 animate-pulse bg-gray-300"></div>
 
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15453.342690074036!2d79.99901745738073!3d14.465404476079506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4c8ca30a062857%3A0x6d73a125daf81a89!2sPLS%20Construction%20Materials!5e0!3m2!1sen!2sin!4v1772970440012!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34810.26414869153!2d79.97123658657073!3d14.465404373338492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4c8ca30a062857%3A0x6d73a125daf81a89!2sPLS%20Construction%20Materials!5e1!3m2!1sen!2sin!4v1776660842487!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -52,7 +52,7 @@ export default function KisanNagarPage() {
 
             {/* Directions */}
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=14.465404,79.999017"
+              href="https://www.google.com/maps/dir/?api=1&destination=PLS Construction Materials Kisan Nagar"
               target="_blank"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
             >
