@@ -1,7 +1,8 @@
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { LanguageProvider } from "../src/context/LanguageContext"; // ✅ added
+import { LanguageProvider } from "../src/context/LanguageContext";
+import FloatingContact from "@/components/FloatingContact";
 
 export const metadata = {
   title: "PLS Construction Materials",
@@ -16,10 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-
-        {/* ✅ Added wrapper only */}
         <LanguageProvider>
-
           <Header />
 
           <main className="flex-grow">
@@ -27,9 +25,8 @@ export default function RootLayout({
           </main>
 
           <Footer />
-
+          <FloatingContact />
         </LanguageProvider>
-
       </body>
     </html>
   );
