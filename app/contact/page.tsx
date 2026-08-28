@@ -12,7 +12,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full">
         <img
-          src="/contact.jpg"
+          src="/contact.png"
           alt="Contact PLS Construction Materials"
           className="absolute inset-0 w-full h-full object-cover"
         />

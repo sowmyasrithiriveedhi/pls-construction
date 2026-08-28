@@ -12,7 +12,7 @@ export default function AllipuramPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full">
         <img
-          src="/location-hero.jpg"
+          src="/location/allipuram.png"
           alt="Allipuram Location"
           className="absolute inset-0 w-full h-full object-cover"
         />

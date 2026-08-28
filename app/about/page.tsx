@@ -13,7 +13,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full">
         <img
-          src="/aboutus.jpg"
+          src="/aboutus.png"
           alt="PLS Construction Materials Shop"
           className="absolute inset-0 w-full h-full object-cover"
         />
