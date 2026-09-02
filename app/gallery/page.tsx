@@ -31,7 +31,7 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full">
         <img
-          src="/gallery-hero.jpg"
+          src="/gallery/gallery.png"
           alt="Gallery"
           className="absolute inset-0 w-full h-full object-cover"
         />
