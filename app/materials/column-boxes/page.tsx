@@ -11,7 +11,7 @@ export default function ColumnBoxesPage() {
     <>
       <section className="relative h-[60vh] w-full">
         <img
-          src="/materials/column-boxes.jpg"
+          src="/materials/column-boxes.png"
           alt="Column Boxes"
           className="absolute inset-0 w-full h-full object-cover"
         />
